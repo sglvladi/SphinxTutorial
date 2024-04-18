@@ -115,7 +115,7 @@ Adding pages to our documentation
 
 Even though we have generated the ``simpleble.rst`` file, in order to add it to our documentation we still need to reference it within the ``toctree`` specified in our ``index.rst`` file. 
 
-While we are here, let's also create and add an "Introduction" and "Examples" page to our documentation. We start by creating a ``intro.rst`` file in our `Sphinx source root` (the same directory as the ``index.rst`` and ``simpleble.rts`` files), with the following content:
+While we are here, let's also create and add an "Introduction" and "Examples" page to our documentation. We start by creating a ``intro.rst`` file in our `Sphinx source root` (the same directory as the ``index.rst`` and ``simpleble.rst`` files), with the following content:
 
 .. code-block:: RST
     
@@ -133,18 +133,18 @@ While we are here, let's also create and add an "Introduction" and "Examples" pa
 
     As a newbie experimenter/hobbyist in the field of IoT using BLE communications, I found it pretty hard to identify a Python package which would enable one to use a Raspberry Pi (Zero W inthis case) to swiftly scan, connect to and read/write from/to a nearby BLE device (GATT server). 
 
-    This package is intended to provide a quick, as well as (hopefully) easy to undestand, way of getting a simple BLE GATT client up and running, for all those out there, who, like myself, are hands-on learners and are eager to get their hands dirty from early on. 
+    This package is intended to provide a quick, as well as (hopefully) easy to understand, way of getting a simple BLE GATT client up and running, for all those out there, who, like myself, are hands-on learners and are eager to get their hands dirty from early on. 
 
     Limitations
     ***********
 
-    - As my main use-case scenario was to simply connect two devices, the current version of :class:`simpleble.SimpleBleClient` has been designed and implemented with this use-case in mind. As such, if you are looking for a package to allow you to connect to multiple devices, then know that off-the-self this package DOES NOT allow you to do so. However, implementing such a feature is an easily achievable task, which has been planned for sometime in the near future and if there proves to be interest on the project, I would be happy to speed up the process.
+    - As my main use-case scenario was to simply connect two devices, the current version of :class:`simpleble.SimpleBleClient` has been designed and implemented with this use-case in mind. As such, if you are looking for a package to allow you to connect to multiple devices, then know that off-the-self this package DOES NOT allow you to do so. However, implementing such a feature is an easily achievable task, which has been planned for sometime in the near future, and if there proves to be interest in the project, I would be happy to speed up the process.
 
     - Only Read and Write operations are currently supported, but I am planning on adding Notifications soon.
 
     - Although the interfacing operations of the :class:`bluepy.btle.Service` and :class:`bluepy.btle.Peripheral` classes have been brought forward to the :class:`simpleble.SimpleBleClient` class, the same has not been done for the :class:`bluepy.btle.Descriptor`, meaning that the :class:`simpleble.SimpleBleClient` cannot be used to directly access the Descriptors. This can however be done easily by obtaining a handle of a :class:`simpleble.SimpleBleDevice` object and calling the superclass :meth:`bluepy.btle.Peripheral.getDescriptors` method. 
 
-There are a few other things that we can observe in the ``index.rst``. First is the usage of the ``****`` underline to specify sub-titles (or sub-sections) in our "Introduction" page. These will be shown as sub-entries to the ``toctree`` (Contents) section of our ``index.html`` file, once built. What is more, we can see how we can use the ``:class:`` and ``:meth:`` directive options, when we wish to refer to specific classed and methods. In case of classes and methods defined within our modules, the ``:class::`` and ``:meth:`` directives also create clickable links to the corresponding classes and methods of our documentation.  
+There are a few other things that we can observe in the ``index.rst``. First is the usage of the ``****`` underline to specify sub-titles (or sub-sections) in our "Introduction" page. These will be shown as sub-entries to the ``toctree`` (Contents) section of our ``index.html`` file, once built. What is more, we can see how we can use the ``:class:`` and ``:meth:`` directive options, when we wish to refer to specific classes and methods. In the case of classes and methods defined within our modules, the ``:class::`` and ``:meth:`` directives also create clickable links to the corresponding classes and methods of our documentation.  
 
 Next, we create a ``examples.rst`` file in the same directory, which contains a working example, which shows how our ``simpleble`` module can be used:
 
@@ -155,11 +155,11 @@ Next, we create a ``examples.rst`` file in the same directory, which contains a 
 
     Installation/Usage:
     *******************
-    As the package has not been published on PyPi yet, it CANNOT be install using pip. 
+    As the package has not been published on PyPi yet, it CANNOT be installed using pip. 
 
     For now, the suggested method is to put the file `simpleble.py` in the same directory as your source files and call ``from simpleble import SimpleBleClient, SimpleBleDevice``.
 
-    ``bluepy`` must also be installed and imported as shown in the example below.
+    ``bluepy`` must also be installed and imported, as shown in the example below.
     For instructions about how to install, as well as the full documentation of, ``bluepy`` please refer `here <https://github.com/IanHarvey/bluepy/>`_
 
     Search for device, connect and read characteristic
@@ -302,7 +302,7 @@ Notice that it is not necessary to add the ``.rst`` extension when specifying fi
 Finalising the documentation
 *****************************
 
-When it is about time to build our documentation for the final time before publishing it, it is always a good idea to run the ``make clean`` and ``make html`` pair, to ensure we have a clean build. If we proceed to build the documentation we have generated, we can now see that 3 new entries have been added to our Contents section in ``index.html`` page, with 4 sub-entries for the "Documentation" page and 2 sub-entries for the "Introduction" and "Examples" pages. When we click on either of them, we are redirected to a new page, which shows a built representation of the corresponding ``*.rst`` file.
+When it is about time to build our documentation for the final time before publishing it, it is always a good idea to run the ``make clean`` and ``make html`` pair, to ensure we have a clean build. If we proceed to build the documentation we have generated, we can now see that three new entries have been added to our Contents section on ``index.html`` page, with 4 sub-entries for the "Documentation" page and two sub-entries for the "Introduction" and "Examples" pages. When we click on either of them, we are redirected to a new page, which shows a built representation of the corresponding ``*.rst`` file.
 
 **AND BEHOLD!!!** We have generated a Sphinx documentation page for our package! Now it's time to publish it :) 
 
